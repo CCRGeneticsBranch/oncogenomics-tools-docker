@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: "3.9"
+services:
+  webapp:
+    image: hsienchao/oncogenomics-tools:latest
+    build:
+      context: .
+      args:
+        INCUBATOR_VER: ${now}
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+    #volumes:
+    #  - /mnt/nci_ccr_gb_oncogenomics_sg/otl:/mnt/otl
+    env_file:
+      - ./.env
+  
