@@ -1,12 +1,11 @@
 # docker-compose.yml
-version: "3.9"
 services:
   webapp:
     image: hsienchao/oncogenomics-tools:latest
     build:
       context: .
       args:
-        INCUBATOR_VER: ${now}
+        - INCUBATOR_VER=${now}
       dockerfile: ./Dockerfile
     ports:
       - "80:80"

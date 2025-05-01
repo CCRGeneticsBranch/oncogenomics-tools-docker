@@ -1,5 +1,5 @@
 FROM debian:11-slim
-RUN apt-get update && apt-get install -y apache2 \
+RUN apt-get update && apt-get install -y apache2 apache2-utils apache2-dev mariadb-client\
     pkg-config libmariadb-dev gcc git vim wget rsync libapache2-mod-wsgi-py3 python3-pip\
     && apt-get clean \
     && apt-get autoremove \
@@ -20,7 +20,6 @@ RUN mkdir -p /mnt/otl
 COPY ./app/mount /mnt/otl
 RUN chown -R www-data /mnt/otl
 RUN chown -R www-data /var/www/html/app/ogtools
-COPY .htaccess /var/www/html/app/
 
 EXPOSE 80
 

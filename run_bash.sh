@@ -1,1 +1,1 @@
-sudo docker exec -it oncogenomics_tools_docker-webapp-1 bash
+sudo docker exec -it oncogenomics-tools-docker-webapp-1 bash
