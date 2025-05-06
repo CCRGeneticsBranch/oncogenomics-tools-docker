@@ -18,6 +18,12 @@
     
     #mysql
     DATABASE_URL=
+
+    #mysql container
+    MYSQL_ROOT_PASSWORD=
+    MYSQL_DATABASE=
+    MYSQL_USER=
+    MYSQL_PASSWORD=
     
     #iTrust
     OAUTH_ISSUER=https://stsstg.nih.gov

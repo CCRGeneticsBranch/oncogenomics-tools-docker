@@ -1,17 +1,12 @@
-FROM python:3.8-slim
+FROM python:3.6-slim
 
 RUN apt-get update && apt-get install -y pkg-config libmariadb-dev gcc\
     && apt-get clean\
     && apt-get autoremove\
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./app /app
-
-WORKDIR /app
-
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-EXPOSE 80
-
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "run:app"]
+CMD sleep infinity
 
