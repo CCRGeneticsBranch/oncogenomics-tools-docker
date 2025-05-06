@@ -1,16 +1,35 @@
-# docker-compose.yml
 services:
   webapp:
-    image: hsienchao/oncogenomics-tools:latest
     build:
       context: .
-      args:
-        - INCUBATOR_VER=${now}
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "80:80"
-    #volumes:
-    #  - /mnt/nci_ccr_gb_oncogenomics_sg/otl:/mnt/otl
+    depends_on:
+      - mysql
+    volumes:
+      - app-data:/app/mount
     env_file:
       - ./.env
-  
+
+  mysql:
+    image: mariadb:10.11
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    env_file:
+      - ./.env
+
+  batch:
+    build:
+      context: ./batch
+      dockerfile: Dockerfile
+    volumes:
+      - app-data:/app/mount
+    profiles:
+      - donotstart
+
+volumes:
+  app-data:
+  mysql-data:
+
