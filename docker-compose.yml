@@ -9,8 +9,8 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "80:80"
-    #volumes:
-    #  - /mnt/nci_ccr_gb_oncogenomics_sg/otl:/mnt/otl
+    volumes:
+      - /mnt/nci_ccr_gb_oncogenomics_sg/otl:/mnt/otl
     env_file:
       - ./.env
   
